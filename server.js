@@ -33,12 +33,14 @@ app.post("/sendToMail", (req, res) => {
 
     
     const transporter = nodemailer.createTransport({
-      host: "sandbox.smtp.mailtrap.io",
-      port: 2525,
+      host: process.env.mail_smtp,
+      port: process.env.mail_port,
+      ssl: false,
+      tls: true,
       auth: {
         user: process.env.mail_user,
         pass: process.env.mail_pass
-      }
+      } 
 
     })
 
